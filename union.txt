@@ -1,0 +1,13 @@
+select origin_no, call_date, destination_no, wholesale, retail, 
+                   billable_duration, 
+                   call_status 
+                   from cdr where account = '0411555013'
+             
+union all
+
+select account_no, extend(to_date(to_char(sms_date) ||' '||
+       substring(lpad(''||sms_time, 6, '0') from 1 for 2) || ':' ||
+       substring(lpad(''||sms_time, 6, '0') from 3 for 2) || ':' ||
+       substring(lpad(''||sms_time, 6, '0') from 5 for 2)),year to second), 
+destination_no, sms_charge, sms_charge, 0, sms_record_status_id
+from sms_record where account_no = '0411555013'
