@@ -1,5 +1,7 @@
 package com.totaltel.prepaid.test;
 
+import org.junit.Test;
+
 public class SampleTest {
 
   @Test
